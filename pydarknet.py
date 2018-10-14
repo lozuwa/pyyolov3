@@ -5,13 +5,7 @@ from ctypes import *
 import numpy as np
 
 # Path to graphs.
-dir_path = os.path.dirname(os.path.realpath(__file__))
-
-# Important paths.
-path_to_darknet = os.path.join(dir_path, "resources", "libdarknet_cpu.so")
-path_to_yolo_v3_cfg = os.path.join(dir_path, "resources", "yolov3.cfg").encode("ascii")
-path_to_yolo_v3_weights = os.path.join(dir_path, "resources", "yolov3.weights").encode("ascii")
-path_to_coco_data = os.path.join(dir_path, "data/coco.data").encode("ascii")
+dir_path = os.path.dirname(os.path.realpath('__file__'))
 
 class BOX(Structure):
   _fields_ = [("x", c_float),
@@ -45,9 +39,9 @@ class Yolov3Wrapper(object):
       use_gpu=False
     # Local variables.
     if use_gpu:
-      path_to_static_lib = os.path.join(dir_path, "trained_models/ResourcesYolo/libdarknet.so")
+      path_to_static_lib = os.path.join(dir_path, "resources/libdarknet_gpu.so")
     else:
-      path_to_static_lib = os.path.join(dir_path, "trained_models/ResourcesYolo/libdarknet_cpu.so")
+      path_to_static_lib = os.path.join(dir_path, "resources/libdarknet_cpu.so")
     # Load resources.
     lib = CDLL(path_to_static_lib, RTLD_GLOBAL)
     lib.network_width.argtypes = [c_void_p]
@@ -147,8 +141,8 @@ class Yolov3Wrapper(object):
 class Yolov3(Yolov3Wrapper):
   def __init__(self, use_gpu:bool=None):
     super(Yolov3, self).__init__(use_gpu=use_gpu)
-    path_to_yolo_v3_cfg = os.path.join(dir_path, "trained_models/ResourcesYolo/yolov3.cfg").encode("ascii")
-    path_to_yolo_v3_weights = os.path.join(dir_path, "trained_models/ResourcesYolo/yolov3.weights").encode("ascii")
+    path_to_yolo_v3_cfg = os.path.join(dir_path, "resources/yolov3.cfg").encode("ascii")
+    path_to_yolo_v3_weights = os.path.join(dir_path, "resources/yolov3.weights").encode("ascii")
     path_to_coco_data = os.path.join(dir_path, "data/coco.data").encode("ascii")
     self.net = self.load_net(path_to_yolo_v3_cfg, path_to_yolo_v3_weights, 0)
     self.meta = self.load_meta(path_to_coco_data)

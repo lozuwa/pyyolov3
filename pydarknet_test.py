@@ -13,7 +13,7 @@ class pydarknet_test(unittest.TestCase):
 		pass
 
 	def test_yolov3(self):
-		yolov3 = Yolov3()
+		yolov3 = Yolov3(use_gpu=True)
 		objects = yolov3.findObjects(image=self.image)
 		print(objects)
 
