@@ -1,16 +1,8 @@
 classes= 80
-<<<<<<< HEAD
 #train  = /home/pjreddie/data/coco/trainvalno5k.txt
 #valid  = coco_testdev
 #valid = data/coco_val_5k.list
 #backup = /home/pjreddie/backup/
 names = /home/rodrigo-loza/anaconda3/envs/face_biometrics_backend/lib/python3.6/site-packages/pyyolov3/data/coco.names
-=======
-train  = /home/pjreddie/data/coco/trainvalno5k.txt
-#valid  = coco_testdev
-valid = data/coco_val_5k.list
-names = data/coco.names
-backup = /home/pjreddie/backup/
->>>>>>> 1530ed638db3f89f15ae2bf6bf7bcd7a1924b32d
 eval=coco
 
