@@ -5,7 +5,11 @@ from ctypes import *
 import numpy as np
 
 # Path to graphs.
+<<<<<<< HEAD
 dir_path = os.path.dirname(os.path.realpath(__file__))
+=======
+dir_path = os.path.dirname(os.path.realpath('__file__'))
+>>>>>>> 1530ed638db3f89f15ae2bf6bf7bcd7a1924b32d
 
 class BOX(Structure):
   _fields_ = [("x", c_float),
@@ -155,7 +159,11 @@ class Yolov3(Yolov3Wrapper):
     im = IMAGE(w,h,c,data)
     return im, arr
 
+<<<<<<< HEAD
   def findObjects(self, image:np.ndarray=None, thresh:float=None, hier_thresh:float=None, nms:float=None):
+=======
+  def findObjects(self, image=None, thresh=.5, hier_thresh=.5, nms=.45):
+>>>>>>> 1530ed638db3f89f15ae2bf6bf7bcd7a1924b32d
     """
     Infers the objects in an image.
     :param image: A numpy array that contains an image. 
@@ -163,6 +171,7 @@ class Yolov3(Yolov3Wrapper):
     :param hier_thresh: The hierarchical threshold.
     :param nms: non-max-supression parameter.
     """
+<<<<<<< HEAD
     # Assertions.
     if not isinstance(image, np.ndarray):
       raise ValueError("Image cannot be None.")
@@ -173,6 +182,8 @@ class Yolov3(Yolov3Wrapper):
     if not isinstance(nms, float):
       nms = 0.45
     # Logic.
+=======
+>>>>>>> 1530ed638db3f89f15ae2bf6bf7bcd7a1924b32d
     im, image = self.arrayToImage(image)
     self.rgbgr_image(im)
     num = c_int(0)
